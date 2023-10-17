@@ -15,6 +15,8 @@ class FileExplorer(QWidget):
 
         self.text_browser = QTextBrowser(self)
         self.layout.addWidget(self.text_browser)
+        self.text_browser.setPlainText("ls - вывод всех файлов в директории\ncd - перейти в директорию\n"
+                                       "cp - скопировать файлы в указанную директорию")
 
         self.command_input = QLineEdit(self)
         self.layout.addWidget(self.command_input)

@@ -21,15 +21,22 @@ def copy_files():
     show_files()
     temp = input("What you want to copy\n1 - file\n2 - group of file\n")
     if temp == "1":
-        filename = input("Enter name of file:\n")
-        path = input("Enter path where you want to copy:\n")
-        shutil.copy(filename, path)
+        try:
+            filename = input("Enter name of file:\n")
+            path = input("Enter path where you want to copy:\n")
+            shutil.copy(filename, path)
+        except FileNotFoundError:
+            print("Check that you enter filename correct")
     elif temp == "2":
-        filename = input('Enter files separated by spaces:\n')
-        path = input("Enter path where you want to copy:\n")
-        for elem in filename.split(" "):
-            shutil.copy(elem, path)
-
+        try:
+            filename = input('Enter files separated by spaces:\n')
+            path = input("Enter path where you want to copy:\n")
+            for elem in filename.split(" "):
+                shutil.copy(elem, path)
+        except PermissionError:
+            print("Check that you enter files, not directory")
+        except FileNotFoundError:
+            print("Check that you enter filename correct")
     else:
         print("Чел ты")
 
